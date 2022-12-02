@@ -1,0 +1,27 @@
+ALGORITHM sentenceStats
+VAR
+    sentence: STRING
+    wordsCount, charactersCount, vowelsCount, i: INTEGER := 0
+BEGIN
+    write("Please type your sentence")
+    read(sentence)
+    FOR i FROM 0 TO length(sentence)-1 STEP 1  DO 
+        IF (sentence[0] = ".") THEN 
+            break
+        ELSE DO
+            charactersCount = charactersCount + 1
+            IF (sentence[i] = " ") THEN
+                wordsCount = wordsCount + 1
+            END_IF
+            IF (sentence[i] = ("a", "e", "i", "o", "u", "y")) THEN
+                vowelsCount = vowelsCount + 1
+            END_IF
+        END_IF
+    END_FOR
+    IF (NOT(sentence[sentence.length - 2] = " ")) THEN
+        wordsCount = wordsCount + 1
+    END_IF
+    write ("Number of characters: ", charactersCount,
+           "Number of words: ", wordsCount,
+           "Number of vowels: ", vowelsCount)
+END
